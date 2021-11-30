@@ -42,8 +42,28 @@ variable "expiration_date" {
   type        = string
   default     = null
 }
-variable "policies" {
-  description = " Set policies for a key, such as an automatic rotation policy or a dual authorization policy."
+variable "rotation" {
+  description = "Rotaion policy"
   type        = any
-  default     = {}
+  default     = []
+}
+variable "dual_auth_delete" {
+  description = "Dual auth policy"
+  type        = any
+  default     = []
+}
+variable "key_alias" {
+  type        = string
+  default     = null
+  description = "Name of Key alias that has to be created"
+}
+variable "key_ring_id" {
+  type        = string
+  default     = null
+  description = "Key ring id that has to be created /  used in kms_key resource"
+}
+variable "create_key_ring" {
+  default     = false
+  type        = bool
+  description = "If true, this module creates a key ring"
 }
