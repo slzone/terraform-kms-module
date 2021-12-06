@@ -35,10 +35,9 @@ resource "ibm_hpcs" "hpcs" {
 
 # This is needed if no instances are provisioned
 data "ibm_resource_instance" "kms_instance" {
+  count             = var.kms_provision ? 0 : 1
   name              = var.kms_name
   location          = var.kms_location
   resource_group_id = var.resource_group_id
   service           = var.kms_service == "hpcs" ? "hs-crypto" : "kms"
-
-  depends_on        = [ibm_resource_instance.kms_instance, ibm_hpcs.hpcs]
 } 
