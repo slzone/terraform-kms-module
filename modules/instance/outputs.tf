@@ -1,3 +1,3 @@
 output "instance_info" {
-   value = data.ibm_resource_instance.kms_instance
+   value = data.ibm_resource_instance.kms_instance.guid
 } 
